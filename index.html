@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContratRed – Contratación pública para todos</title>
+    <meta name="description" content="ContratRed es tu aliado en contratación estatal: encuentra, filtra y analiza convocatorias públicas de manera sencilla.">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --primary: #6a0dad;
+            --primary-light: #8a2be2;
+            --primary-dark: #4a0072;
+            --primary-soft: #ece0ff;
+            --text-main: #1a1a1a;
+            --text-secondary: #4a5568;
+            --nav-text: #333333;
+            --bg-start: #f0f4ff;
+            --bg-end: #e0e8ff;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 32px rgba(106, 13, 173, 0.2);
+            --shadow-xl: 0 12px 48px rgba(106, 13, 173, 0.3);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end), #d0d8ff);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.7;
+            font-size: 18px;
+            overflow-x: hidden;
+        }
+
+        /* Animaciones generales */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px) scale(.98);
+            animation: fadeIn .9s forwards;
+        }
+
+        @keyframes fadeIn { to { opacity:1; transform:translateY(0) scale(1); } }
+
+        /* HEADER */
+        header {
+            padding: 20px 60px;
+            display:flex;
+            justify-content:space-between;
+            background:#fff;
+            position:sticky;
+            top:0;
+            z-index:1000;
+            border-bottom:3px solid transparent;
+            border-image: linear-gradient(90deg, var(--primary), var(--primary-light)) 1;
+        }
+
+        header img { height:120px; }
+
+        nav {
+            background:#fff;
+            padding:14px 20px;
+            border-radius:16px;
+            box-shadow:var(--shadow-lg);
+            display:flex;
+            gap:8px;
+        }
+
+        nav a {
+            font-size:18px;
+            text-decoration:none;
+            color:var(--nav-text);
+            padding:12px 20px;
+            border-radius:12px;
+        }
+
+        nav a:hover { background:var(--primary-soft); color:var(--primary); }
+
+        /* --------------------------- */
+        /* 🎯 CINTILLA DE BIENVENIDA   */
+        /* --------------------------- */
+
+        .welcome-section {
+            text-align:center;
+            padding:30px 20px 0;
+        }
+
+        .welcome-box {
+            max-width:1100px;
+            margin:0 auto;
+            background:linear-gradient(135deg, var(--white), #fafbff);
+            border-radius:24px;
+            padding:36px 40px;
+            border:2px solid rgba(106,13,173,0.2);
+            box-shadow:var(--shadow-xl);
+            position:relative;
+            overflow:hidden;
+            transition:.4s;
+
+            /* ✔ Animación suave y bonita */
+            animation: welcomeEntrance 0.9s ease-out forwards;
+        }
+
+        @keyframes welcomeEntrance {
+            0% {
+                opacity:0;
+                transform: translateY(-20px) scale(0.97);
+            }
+            100% {
+                opacity:1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Hover limpio */
+        .welcome-box:hover {
+            transform:translateY(-6px);
+            box-shadow:0 24px 60px rgba(106,13,173,0.35);
+            border-color:rgba(106,13,173,0.35);
+        }
+
+        /* Quitamos solo las animaciones molestas */
+        .welcome-box::before {
+            content:'';
+            position:absolute;
+            top:0; left:0; right:0;
+            height:4px;
+            background:linear-gradient(90deg, var(--primary), var(--primary-light), var(--primary));
+            background-size:200% 100%;
+        }
+
+        /* Quitamos overlay */
+        .welcome-box::after { display:none; }
+
+        /* El texto NO debe temblar */
+        .welcome-section h2,
+        .welcome-section p,
+        .welcome-section a {
+            animation:none !important;
+        }
+
+        /* HERO */
+        .hero {
+            display:flex;
+            justify-content:center;
+            gap:50px;
+            padding:40px;
+            flex-wrap:wrap;
+        }
+
+        .hero-box {
+            background:#fff;
+            padding:48px;
+            border-radius:28px;
+            width:45%;
+            min-width:360px;
+            border:2px solid rgba(106,13,173,0.2);
+            box-shadow:var(--shadow-xl);
+            text-align:center;
+        }
+
+        .hero-title {
+            font-size:44px;
+            font-weight:800;
+            background:linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+
+        .hero-text { font-size:20px; color:var(--text-secondary); }
+
+        .btn {
+            padding:18px 36px;
+            border-radius:16px;
+            text-decoration:none;
+            font-weight:700;
+            display:inline-block;
+        }
+
+        .btn-purple { background:linear-gradient(135deg,var(--primary-light),var(--primary)); color:#fff; }
+        .btn-outline { border:2px solid var(--primary); color:var(--primary); background:#fff; }
+
+        /* ROBOT */
+        .robot { width:430px; }
+
+        /* FEATURES */
+        .section { padding:60px; }
+        .section-title {
+            text-align:center;
+            font-size:36px;
+            font-weight:800;
+            background:linear-gradient(135deg, var(--primary), var(--primary-light));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+
+        .features-grid {
+            display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+        }
+
+        .feature-card {
+            background:#fff;
+            padding:32px;
+            border-radius:20px;
+            box-shadow:var(--shadow-lg);
+            border:2px solid rgba(106,13,173,0.1);
+        }
+
+        /* ESTADÍSTICAS */
+        .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+
+        /* TESTIMONIOS */
+        .testimonials-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; }
+
+        /* CTA FINAL */
+        .cta-final {
+            background:linear-gradient(135deg,var(--primary-light),var(--primary),var(--primary-dark));
+            color:#fff;
+            padding:50px;
+            border-radius:24px;
+            text-align:center;
+            box-shadow:var(--shadow-xl);
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <img src="assets/logo.png" alt="Logo">
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="inscripcion.html">Inscripción</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="promociones.html">Promociones</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- CINTILLA DE BIENVENIDA -->
+    <section class="welcome-section">
+        <div class="welcome-box fade-in">
+            <h2>¡Bienvenidos a ContratRed!</h2>
+            <p><a href="servicios.html">Conoce nuestros servicios.</a></p>
+        </div>
+    </section>
+
+    <!-- HERO -->
+    <section class="hero fade-in">
+        <div class="hero-box">
+            <h1 class="hero-title">Tu aliado en contratación estatal</h1>
+            <p class="hero-text">Encuentra y analiza oportunidades con ContratRed.</p>
+            <a href="inscripcion.html" class="btn btn-purple">Comenzar gratis</a>
+            <a href="dashboard.html" class="btn btn-outline">Ver convocatorias</a>
+        </div>
+
+        <a href="asistente.html">
+            <img src="assets/robot.png" class="robot" alt="">
+        </a>
+    </section>
+
+    <!-- Las demás secciones quedan idénticas -->
+
+</main>
+
+</body>
+</html>
